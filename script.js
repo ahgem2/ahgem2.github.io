@@ -1,3 +1,48 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const userAnswers = {};
+
+  // Store the user answer for each question
+  function saveAnswer(question, answer) {
+    userAnswers[question] = answer;
+  }
+
+  function calculateResult() {
+    const combination = [
+      userAnswers["What type of food are you feeling?"],
+      userAnswers["How broke are you?"],
+      userAnswers["What do you imagine now?"],
+      userAnswers["What time of day?"],
+      userAnswers["What’s the atmosphere?"],
+    ].join(", ");
+
+    const result =
+      results[combination] || "No match found, maybe try something new today!";
+    displayResult(result);
+  }
+
+  function displayResult(result) {
+    const resultContainer = document.getElementById("result");
+    resultContainer.innerHTML = `<h2>Your Food Match: ${result}</h2>`;
+  }
+
+  document.querySelectorAll(".question1-options button").forEach((button) => {
+    button.addEventListener("click", () => {
+      saveAnswer("What type of food are you feeling?", button.innerText);
+    });
+  });
+
+  document.querySelectorAll(".question2-options button").forEach((button) => {
+    button.addEventListener("click", () => {
+      saveAnswer("How broke are you?", button.innerText);
+    });
+  });
+
+  document
+    .querySelector("#submitQuiz")
+    .addEventListener("click", calculateResult);
+});
+
+//add comment
 const questions = [
   {
     question: "What kind of mood are you in?",
@@ -61,11 +106,32 @@ const questions = [
 ];
 
 const results = {
-  "Cozy, Full": "Italian",
-  "Adventurous, Refreshed": "Thai",
-  "Satisfied, Warm": "Indian",
-  "Curious, Energized": "Vietnamese",
-  // Add more combinations
+  "Cozy, Full, Comfort mac and cheese, Too early for this shi-, Let’s keep it laid-back and chill":
+    "American Comfort Food",
+  "Adventurous, Energized, Flavor central, Midnight feasting, Go heavy or go home":
+    "Fusion Cuisine",
+  "Satisfied, Warm, Warm soup and noodles, Dinner. Good dinner, no stress, Fresh air and good food, yes please":
+    "Asian Noodle Dish",
+  "Curious, Content, Can you add more cheese?, Meh, lunch, hungry but not hungry, Let’s indulge in a luxury":
+    "Italian Pasta",
+  "bOUGIE af, Full, In my penthouse about to host a singles-only party, Midnight feasting, Family-style Fine Dining":
+    "Gourmet Dishes",
+  "Got 1 buck, Cheap af, Snackity snacking, Midnight feasting, Fast Food":
+    "Fast Food",
+  "10-15, no more, Mid mid mid, Dinner. Good dinner, no stress, Casual Dining":
+    "Casual Dining",
+  "Too early for this shi-, Cozy, Let’s keep it laid-back and chill, Light Brunch":
+    "Breakfast Brunch",
+  "Go heavy or go home, Carnivorous steak, Midnight feasting, Steakhouse Meal":
+    "Steakhouse Meal",
+  "Bathing in the sunlight about to take the biggest nap ever, Dinner. Good dinner, no stress, Relaxed Summer Dinner":
+    "Relaxed Summer Dinner",
+  "Frolicking around grassy plains in the middle of nowhere, Casual Dining":
+    "Picnic Food",
+  "Culture shocked, At the beach about to take those Polaroids, Mexican Street Food":
+    "Global Street Food",
+  "Satisfied, Warm, Indian Butter Chicken, Go heavy or go home, Full, Rich Indian Comfort Food":
+    "Indian Butter Chicken",
 };
 
 let currentQuestion = 0;
