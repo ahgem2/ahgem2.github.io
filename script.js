@@ -93,7 +93,7 @@ const results = {
   "ready for an adventure, completely satisfied, mid-range budget, exploring a new culture, midnight craving, indulging in a little luxury": "Indian curry, tandoori chicken, halal food, chai, cheesecake",
   "ready for an adventure, comfortably full, keeping it under $15, basking in the sunshine, about to nap, snack time, enjoying fresh air and great food": "Vietnamese banh mi, fresh spring rolls, chipotle",
   "ready for an adventure, completely satisfied, barely got a dollar, chilling at the beach, late morning, laid-back and chill": "Fish tacos, street corn, or a simple poke bowl",
-"ready for an adventure, energized for the rest of the day, mid-range budget, exploring a new culture, snack time, indulging in a little luxury": "Korean fried chicken, bibimbap, or sushi burritos",
+  "ready for an adventure, energized for the rest of the day, mid-range budget, exploring a new culture, snack time, indulging in a little luxury": "Korean fried chicken, bibimbap, or sushi burritos",
 
   // Feeling satisfied combinations
   "feeling satisfied, warm and cozy, keeping it under $15, late morning, sharing food and bonding with friends": "Warm Korean food like bibimbap or comforting ramen",
@@ -110,22 +110,22 @@ const results = {
   "playful and energetic, content and happy, frolicking in grassy fields, barely got a dollar, snack time, laid-back and chill": "Burgers, loaded fries, or food truck-style meals",
   "playful and energetic, comfortably full, mid-range budget, chilling at the beach, midnight snacking under the stars": "Tacos, sushi rolls, or Korean BBQ",
   "playful and energetic, energized for the rest of the day, mid-range budget, basking in the sunshine, afternoon snack time, enjoying fresh air and great food": "Grilled veggie wraps, fresh smoothies, or acai bowls",
-"playful and energetic, comfortably full, splurging a little today, frolicking in grassy fields, midnight snacking under the stars": "Gourmet sliders, hotpot, loaded nachos, or caramel popcorn",
-"playful and energetic, completely satisfied, keeping it under $15, chilling at the beach, afternoon snack time, laid-back and chill": "beignets, street-style pizza, or donuts",
+  "playful and energetic, comfortably full, splurging a little today, frolicking in grassy fields, midnight snacking under the stars": "Gourmet sliders, hotpot, loaded nachos, or caramel popcorn",
+  "playful and energetic, completely satisfied, keeping it under $15, chilling at the beach, afternoon snack time, laid-back and chill": "beignets, street-style pizza, or donuts",
 
   // Indulgent and luxurious combinations
   "indulgent and luxurious, comfortably full, rooftop party in the city, splurging a little today, midnight craving, indulging in a little luxury": "KBBQ, sushi, or truffle mac and cheese with a rich dessert",
   "indulgent and luxurious, completely satisfied, money's no issue, basking in the sunshine, about to nap, dinner time, indulging in a little luxury": "Gourmet steak, lobster thermidor, or truffle pasta",
   "indulgent and luxurious, warm and cozy, keeping it under $15, exploring a new culture, dinner time, indulging in a little luxury": "Exotic street food like Moroccan tagine, pho, or ramen with a gourmet twist",
   "indulgent and luxurious, comfortably full, splurging a little today, relaxing by a waterfall, dinner time, indulging in a little luxury": "Wagyu beef steak, lobster tail, and truffle mashed potatoes",
-"indulgent and luxurious, full, money's no issue, exploring a new culture, snack time, indulging in a little luxury": "Sushi omakase, foie gras sliders, or caviar-topped oysters",
+  "indulgent and luxurious, full, money's no issue, exploring a new culture, snack time, indulging in a little luxury": "Sushi omakase, foie gras sliders, or caviar-topped oysters",
 
   // Barely got a dollar combinations
   "barely got a dollar, comfortably full, chilling at the beach, afternoon snack time, midnight snacking under the stars": "Fast food like pizza, Taco Bell, or cheeseburgers and fries",
   "barely got a dollar, completely satisfied, snack time, enjoying fresh air and great food": "Banh mi, street tacos, or cheap ramen",
   "barely got a dollar, energized for the rest of the day, frolicking in grassy fields, late morning, laid-back and chill": "Bagels, donuts, or budget sandwiches",
   "cozy and relaxed, warm and cozy, barely got a dollar, basking in the sunshine, snack time, laid-back and chill": "Simple grilled cheese, tomato soup, or pancakes from a diner",
-"cozy and relaxed, completely satisfied, staying budget-friendly, frolicking in grassy fields, dinner time, good dinner, no stress, just relaxation": "Lasagna, spaghetti with meatballs, or a hearty shepherd's pie"
+  "cozy and relaxed, completely satisfied, staying budget-friendly, frolicking in grassy fields, dinner time, good dinner, no stress, just relaxation": "Lasagna, spaghetti with meatballs, or a hearty shepherd's pie",
 
   // Splurging combinations
   "splurging a little today, comfortably full, rooftop party in the city, late morning, indulging in a little luxury": "Upscale brunch with mimosas, eggs benedict, or french toast",
