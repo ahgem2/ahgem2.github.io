@@ -1,3 +1,4 @@
+/* Background and body styling */
 body {
     background: url('https://example.com/clouds.gif') no-repeat center center fixed;
     background-size: cover;
@@ -11,7 +12,7 @@ body {
     align-items: center;
 }
 
-/* look like a mobile screen on any device */
+/* Container styling to ensure mobile look */
 .container {
     text-align: center;
     padding: 20px;
@@ -19,15 +20,15 @@ body {
     border-radius: 10px;
     margin: 20px auto;
     width: 100%;
-    max-width: 400px;
+    max-width: 400px; /* Locks the width to 400px for mobile look */
     height: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adds a subtle shadow for mobile effect */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
 }
 
-/* styling for purple buttons */
+/* Button styling for purple buttons in vertical layout */
 button {
     padding: 15px;
-    background-color: #6a0dad;
+    background-color: #6a0dad; /* Purple color */
     border: none;
     border-radius: 10px;
     color: white;
@@ -35,7 +36,6 @@ button {
     font-size: 18px;
     margin-bottom: 15px; /* Space between buttons */
     width: 100%;
-    max-width: 100%;
 }
 
 /* Button hover effect */
@@ -56,17 +56,23 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Lock the width for larger screens so it always looks like mobile */
-@media screen and (min-width: 600px) {
+/* Responsive mobile styling */
+@media screen and (max-width: 600px) {
     body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        padding: 10px;
     }
 
     .container {
         width: 100%;
-        max-width: 400px; /* Mobile size width */
-        height: auto;
+        margin: 0;
+        padding: 20px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+
+    h2 {
+        font-size: 20px;
     }
 }
