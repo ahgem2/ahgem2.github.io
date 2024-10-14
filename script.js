@@ -135,7 +135,8 @@ const results = {
 };
 
 // Keeps track of the current question
-let currentQuestion = 0; 
+let currentQuestion = 0;
+let answers = [];
 
 // Function to display the current question
 function displayQuestion() {
@@ -163,10 +164,38 @@ function displayQuestion() {
     const button = document.createElement("button");
     button.innerText = option;
     button.onclick = () => selectAnswer(option);
+    button.style.marginBottom = '10px'; // Space between buttons
     quizDiv.appendChild(button);
   });
 }
 
 // Function to handle answer selection
 function selectAnswer(option) {
-  // Save the selected 
+  // Save the selected answer
+  answers.push(option);
+
+  // Move to the next question or show the result
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    displayQuestion();
+  } else {
+    showResult();
+  }
+}
+
+// Function to calculate and display the result based on user answers
+function showResult() {
+  const quizDiv = document.getElementById("quiz");
+  const resultDiv = document.getElementById("result");
+
+  // Create a combination key from the user's answers
+  const combination = answers.join(", ").toLowerCase();
+
+  // Display the result based on the combination
+  const result = results[combination] || "Sandwiches, donuts, curry, or noodles work for now!";
+  quizDiv.innerHTML = ''; // Clear quiz div
+  resultDiv.innerHTML = `<h2>Your Food Match: ${result}</h2>`;
+}
+
+// Start the quiz by displaying the first question
+displayQuestion();
