@@ -1,146 +1,164 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const userAnswers = {};
+// Object to store user's answers
+const userAnswers = {};
 
-  // Store the user answer for each question
-  function saveAnswer(question, answer) {
-    userAnswers[question] = answer;
-  }
-
-  function calculateResult() {
-    const combination = [
-      userAnswers["What type of food are you feeling?"],
-      userAnswers["How broke are you?"],
-      userAnswers["What do you imagine now?"],
-      userAnswers["What time of day?"],
-      userAnswers["What’s the atmosphere?"],
-    ].join(", ");
-
-    const result =
-      results[combination] || "No match found, maybe try something new today!";
-    displayResult(result);
-  }
-
-  function displayResult(result) {
-    const resultContainer = document.getElementById("result");
-    resultContainer.innerHTML = `<h2>Your Food Match: ${result}</h2>`;
-  }
-
-  document.querySelectorAll(".question1-options button").forEach((button) => {
-    button.addEventListener("click", () => {
-      saveAnswer("What type of food are you feeling?", button.innerText);
-    });
-  });
-
-  document.querySelectorAll(".question2-options button").forEach((button) => {
-    button.addEventListener("click", () => {
-      saveAnswer("How broke are you?", button.innerText);
-    });
-  });
-
-  document
-    .querySelector("#submitQuiz")
-    .addEventListener("click", calculateResult);
-});
-
-//add comment
+// Questions with pixel art and options
 const questions = [
   {
-    question: "What kind of mood are you in?",
+    question: "What mood are you in today?",
+    image: "images/pixel_cozy.png", // Pixel art for mood
     options: [
-      "Cozy",
-      "Adventurous",
-      "Satisfied",
-      "Curious",
-      "Playful",
-      "Indulgent",
+      "Cozy and relaxed",
+      "Ready for an adventure",
+      "Feeling satisfied",
+      "Curious about something new",
+      "Playful and energetic",
+      "Indulgent and luxurious",
     ],
   },
   {
-    question: "What do you want to feel after your meal?",
-    options: ["Full", "Refreshed", "Warm", "Satisfied", "Energized", "Content"],
-  },
-  {
-    question: "how broke are you?",
+    question: "How do you want to feel after your meal?",
+    image: "images/pixel_energized.png", // Pixel art for meal feeling
     options: [
-      "got 1 buck",
-      "10-15, no more",
-      "bOUGIE af",
-      "cheap af",
-      "mid mid mid",
-      "normal. just normal",
+      "Comfortably full",
+      "Refreshed and light",
+      "Warm and cozy",
+      "Completely satisfied",
+      "Energized for the rest of the day",
+      "Content and happy",
     ],
   },
   {
-    question: "now, what aligns with your imagination",
+    question: "What's your current budget?",
+    image: "images/pixel_money.png", // Pixel art for budget
     options: [
-      "frolicking around grassy plains in the middle of nowhere",
-      "in my penthouse about to host a singles-only party",
-      "culture shocked",
-      "by the waterfalls while it thunderstorms",
-      "bathing in the sunlight about to take the biggest nap ever",
-      "at the beach about to take those polaroids",
+      "Barely got a dollar",
+      "Keeping it under $15",
+      "Splurging a little today",
+      "Staying budget-friendly",
+      "Mid-range budget",
+      "Money's no issue, treat yourself!",
     ],
   },
   {
-    question: "what time of day?",
+    question: "Where's your imagination taking you?",
+    image: "images/pixel_imagination.png", // Pixel art for imagination
     options: [
-      "too early for this shi-",
-      "meh, lunch, hungry but not hungry",
-      "snackity snacking",
-      "go heavy or go home",
-      "midnight feasting",
-      "dinner. good dinner, no stress",
+      "Frolicking in grassy fields",
+      "At a rooftop party in the city",
+      "Exploring a new culture",
+      "Relaxing by a waterfall",
+      "Basking in the sunshine, about to nap",
+      "Chilling at the beach, taking photos",
     ],
   },
   {
-    question: "atmosphere?",
+    question: "What time of day is it?",
+    image: "images/pixel_clock.png", // Pixel art for time of day
     options: [
-      "Let’s keep it laid-back and chill",
-      "I love sharing and bonding over food!",
-      "Let’s indulge in a luxury",
-      "Fresh air and good food, yes please",
-      "midnight feasting",
-      "dinner. good dinner, no stress",
+      "Early morning, too tired for this",
+      "Late morning, ready for lunch",
+      "Afternoon snack time",
+      "Dinner time, let's go big!",
+      "Midnight craving, let's feast!",
+      "Dinner, but keeping it calm",
+    ],
+  },
+  {
+    question: "What's the vibe around you?",
+    image: "images/pixel_vibe.png", // Pixel art for vibe
+    options: [
+      "Laid-back and chill",
+      "Sharing food and bonding with friends",
+      "Indulging in a little luxury",
+      "Enjoying fresh air and great food",
+      "Midnight snacking under the stars",
+      "Good dinner, no stress, just relaxation",
     ],
   },
 ];
 
+// Expanded results based on combinations of answers
 const results = {
-  "Cozy, Full, Comfort mac and cheese, Too early for this shi-, Let’s keep it laid-back and chill":
-    "American Comfort Food",
-  "Adventurous, Energized, Flavor central, Midnight feasting, Go heavy or go home":
-    "Fusion Cuisine",
-  "Satisfied, Warm, Warm soup and noodles, Dinner. Good dinner, no stress, Fresh air and good food, yes please":
-    "Asian Noodle Dish",
-  "Curious, Content, Can you add more cheese?, Meh, lunch, hungry but not hungry, Let’s indulge in a luxury":
-    "Italian Pasta",
-  "bOUGIE af, Full, In my penthouse about to host a singles-only party, Midnight feasting, Family-style Fine Dining":
-    "Gourmet Dishes",
-  "Got 1 buck, Cheap af, Snackity snacking, Midnight feasting, Fast Food":
-    "Fast Food",
-  "10-15, no more, Mid mid mid, Dinner. Good dinner, no stress, Casual Dining":
-    "Casual Dining",
-  "Too early for this shi-, Cozy, Let’s keep it laid-back and chill, Light Brunch":
-    "Breakfast Brunch",
-  "Go heavy or go home, Carnivorous steak, Midnight feasting, Steakhouse Meal":
-    "Steakhouse Meal",
-  "Bathing in the sunlight about to take the biggest nap ever, Dinner. Good dinner, no stress, Relaxed Summer Dinner":
-    "Relaxed Summer Dinner",
-  "Frolicking around grassy plains in the middle of nowhere, Casual Dining":
-    "Picnic Food",
-  "Culture shocked, At the beach about to take those Polaroids, Mexican Street Food":
-    "Global Street Food",
-  "Satisfied, Warm, Indian Butter Chicken, Go heavy or go home, Full, Rich Indian Comfort Food":
-    "Indian Butter Chicken",
+  // Cozy and relaxed combinations
+  "cozy and relaxed, comfortably full, barely got a dollar, early morning, laid-back and chill": "Waffle house, ramen, or eggs at home...just go home",
+  "cozy and relaxed, comfortably full, keeping it under $15, afternoon snack time, laid-back and chill": "Hearty soups, grilled cheese sandwiches, or deli-style sandwiches",
+  "cozy and relaxed, refreshed and light, staying budget-friendly, dinner but keeping it calm, good dinner, no stress, just relaxation": "Fresh salads, baked chicken, or simple pasta dishes",
+  "cozy and relaxed, completely satisfied, splurging a little today, late morning, indulging in a little luxury": "Decadent brunch with stuffed French toast, mimosas, and gourmet pastries",
+  "cozy and relaxed, warm and cozy, mid-range budget, chilling at the beach, dinner but keeping it calm": "Comforting BBQ ribs, grilled corn, and loaded baked potatoes, mexican",
+
+  // Ready for an adventure combinations
+  "ready for an adventure, energized for the rest of the day, splurging a little today, dinner time, indulging in a little luxury": "Fusion cuisine like Asian tacos or Indian pizza",
+  "ready for an adventure, completely satisfied, staying budget-friendly, exploring a new culture, late morning, enjoying fresh air and great food": "Dim sum, street food-style tacos, or sushi",
+  "ready for an adventure, comfortably full, mid-range budget, basking in the sunshine, about to nap, snack time, laid-back and chill": "Mediterranean wraps, grilled kebabs, or poke bowls",
+  "ready for an adventure, completely satisfied, mid-range budget, exploring a new culture, midnight craving, indulging in a little luxury": "Indian curry, tandoori chicken, halal food, chai, cheesecake",
+  "ready for an adventure, comfortably full, keeping it under $15, basking in the sunshine, about to nap, snack time, enjoying fresh air and great food": "Vietnamese banh mi, fresh spring rolls, chipotle",
+  "ready for an adventure, completely satisfied, barely got a dollar, chilling at the beach, late morning, laid-back and chill": "Fish tacos, street corn, or a simple poke bowl",
+"ready for an adventure, energized for the rest of the day, mid-range budget, exploring a new culture, snack time, indulging in a little luxury": "Korean fried chicken, bibimbap, or sushi burritos",
+
+  // Feeling satisfied combinations
+  "feeling satisfied, warm and cozy, keeping it under $15, late morning, sharing food and bonding with friends": "Warm Korean food like bibimbap or comforting ramen",
+  "feeling satisfied, refreshed and light, staying budget-friendly, relaxing by a waterfall, dinner but keeping it calm": "Fresh seafood, light pasta dishes, or fresh hearty italian soups",
+  "feeling satisfied, completely satisfied, splurging a little today, chilling at the beach, dinner time, enjoying fresh air and great food": "japanese noodles, tom yum soup, or rice/curry ending off with mochi",
+
+  // Curious about something new combinations
+  "curious about something new, full, basking in the sunlight, budget-friendly, dinner time, enjoying fresh air": "BBQ meats, bibimbap, or fish and chips",
+  "curious about something new, refreshed and light, exploring a new culture, afternoon snack time, enjoying fresh air and great food": "Greek gyros, Turkish kebabs, or Lebanese wraps",
+  "curious about something new, completely satisfied, keeping it under $15, frolicking in grassy fields, snack time, laid-back and chill": "Deli sandwiches, falafel wraps, or veggie tacos",
+
+  // Playful and energetic combinations
+  "playful and energetic, comfortably full, at a rooftop party in the city, splurging a little today, late morning, bonding over food": "Upscale brunch dishes like lobster benedict or gourmet avocado toast",
+  "playful and energetic, content and happy, frolicking in grassy fields, barely got a dollar, snack time, laid-back and chill": "Burgers, loaded fries, or food truck-style meals",
+  "playful and energetic, comfortably full, mid-range budget, chilling at the beach, midnight snacking under the stars": "Tacos, sushi rolls, or Korean BBQ",
+  "playful and energetic, energized for the rest of the day, mid-range budget, basking in the sunshine, afternoon snack time, enjoying fresh air and great food": "Grilled veggie wraps, fresh smoothies, or acai bowls",
+"playful and energetic, comfortably full, splurging a little today, frolicking in grassy fields, midnight snacking under the stars": "Gourmet sliders, hotpot, loaded nachos, or caramel popcorn",
+"playful and energetic, completely satisfied, keeping it under $15, chilling at the beach, afternoon snack time, laid-back and chill": "beignets, street-style pizza, or donuts",
+
+  // Indulgent and luxurious combinations
+  "indulgent and luxurious, comfortably full, rooftop party in the city, splurging a little today, midnight craving, indulging in a little luxury": "KBBQ, sushi, or truffle mac and cheese with a rich dessert",
+  "indulgent and luxurious, completely satisfied, money's no issue, basking in the sunshine, about to nap, dinner time, indulging in a little luxury": "Gourmet steak, lobster thermidor, or truffle pasta",
+  "indulgent and luxurious, warm and cozy, keeping it under $15, exploring a new culture, dinner time, indulging in a little luxury": "Exotic street food like Moroccan tagine, pho, or ramen with a gourmet twist",
+  "indulgent and luxurious, comfortably full, splurging a little today, relaxing by a waterfall, dinner time, indulging in a little luxury": "Wagyu beef steak, lobster tail, and truffle mashed potatoes",
+"indulgent and luxurious, full, money's no issue, exploring a new culture, snack time, indulging in a little luxury": "Sushi omakase, foie gras sliders, or caviar-topped oysters",
+
+  // Barely got a dollar combinations
+  "barely got a dollar, comfortably full, chilling at the beach, afternoon snack time, midnight snacking under the stars": "Fast food like pizza, Taco Bell, or cheeseburgers and fries",
+  "barely got a dollar, completely satisfied, snack time, enjoying fresh air and great food": "Banh mi, street tacos, or cheap ramen",
+  "barely got a dollar, energized for the rest of the day, frolicking in grassy fields, late morning, laid-back and chill": "Bagels, donuts, or budget sandwiches",
+  "cozy and relaxed, warm and cozy, barely got a dollar, basking in the sunshine, snack time, laid-back and chill": "Simple grilled cheese, tomato soup, or pancakes from a diner",
+"cozy and relaxed, completely satisfied, staying budget-friendly, frolicking in grassy fields, dinner time, good dinner, no stress, just relaxation": "Lasagna, spaghetti with meatballs, or a hearty shepherd's pie"
+
+  // Splurging combinations
+  "splurging a little today, comfortably full, rooftop party in the city, late morning, indulging in a little luxury": "Upscale brunch with mimosas, eggs benedict, or french toast",
+  "splurging a little today, energized for the rest of the day, exploring a new culture, late morning, bonding over food": "Gourmet street food like bao buns, gyros, or fusion tacos",
+  "splurging a little today, comfortably full, keeping it under $15, exploring a new culture, dinner time, indulging in a little luxury": "KBBQ, sushi, or gourmet pizzas",
+  "ready for an adventure, completely satisfied, mid-range budget, relaxing by a waterfall, late morning, indulging in a little luxury": "Pho, ramen, or spicy Thai curry",
 };
 
-let currentQuestion = 0;
-let answers = [];
+// Keeps track of the current question
+let currentQuestion = 0; 
 
+// Function to display the current question
 function displayQuestion() {
   const quizDiv = document.getElementById("quiz");
-  quizDiv.innerHTML = `<h2>${questions[currentQuestion].question}</h2>`;
 
+  // Clear previous content
+  quizDiv.innerHTML = '';
+
+  // Add the pixel art image
+  const questionImage = document.createElement("img");
+  questionImage.src = questions[currentQuestion].image; // Set the pixel art image for the question
+  questionImage.alt = "Cute pixel art for the question";
+  questionImage.style.width = "100px"; // Adjust the image size
+  questionImage.style.display = "block";
+  questionImage.style.margin = "0 auto 20px";
+  quizDiv.appendChild(questionImage);
+
+  // Add the question text
+  const questionText = document.createElement("h2");
+  questionText.innerText = questions[currentQuestion].question;
+  quizDiv.appendChild(questionText);
+
+  // Add the options as buttons
   questions[currentQuestion].options.forEach((option) => {
     const button = document.createElement("button");
     button.innerText = option;
@@ -149,24 +167,6 @@ function displayQuestion() {
   });
 }
 
+// Function to handle answer selection
 function selectAnswer(option) {
-  answers.push(option);
-  currentQuestion++;
-  if (currentQuestion < questions.length) {
-    displayQuestion();
-  } else {
-    showResult();
-  }
-}
-
-function showResult() {
-  const resultDiv = document.getElementById("result");
-  const key = answers.join(", ");
-  resultDiv.innerText = `You are feeling like: ${
-    results[key] || "a mix of flavors!"
-  }`;
-}
-
-document.getElementById("nextButton").onclick = displayQuestion;
-
-displayQuestion();
+  // Save the selected 
