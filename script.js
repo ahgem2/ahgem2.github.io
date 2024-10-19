@@ -136,7 +136,6 @@ const results = {
   "ready for an adventure, completely satisfied, mid-range budget, relaxing by a waterfall, late morning, indulging in a little luxury": "Pho, ramen, or spicy Thai curry",
 };
 
-// Function to display the current question
 function displayQuestion() {
   const quizDiv = document.getElementById("quiz");
 
@@ -151,19 +150,19 @@ function displayQuestion() {
   const leftGif = document.createElement("img");
   leftGif.src = "https://media.tenor.com/PjmKRWnNSEsAAAAC/soup-noodles.gif"; // Left GIF for each question
   leftGif.alt = "Soup Noodles GIF";
-  leftGif.classList.add('left-gif');
+  leftGif.classList.add('gif-left');
 
   // Add right GIF
   const rightGif = document.createElement("img");
   rightGif.src = "https://media.tenor.com/VLPT0wfRwvIAAAAC/pixel-art-bagel.gif"; // Right GIF for each question
   rightGif.alt = "Bagel GIF";
-  rightGif.classList.add('right-gif');
+  rightGif.classList.add('gif-right');
 
   // Add the pixel art image
   const questionImage = document.createElement("img");
-  questionImage.src = questions[currentQuestion].image; // Set the pixel art image for the question
+  questionImage.src = questions[currentQuestion].image;
   questionImage.alt = "Cute pixel art for the question";
-  questionImage.style.width = "100px"; // Adjust the image size
+  questionImage.style.width = "100px";
   questionImage.style.display = "block";
   questionImage.style.margin = "0 auto 20px";
 
@@ -177,7 +176,7 @@ function displayQuestion() {
     const button = document.createElement("button");
     button.innerText = option;
     button.onclick = () => selectAnswer(option);
-    button.style.marginBottom = '10px'; // Space between buttons
+    button.style.marginBottom = '10px';
     optionsContainer.appendChild(button);
   });
 
@@ -194,7 +193,6 @@ function displayQuestion() {
 
 // Function to handle answer selection
 function selectAnswer(option) {
-  // Save the selected answer
   answers.push(option);
 
   // Move to the next question or show the result
@@ -210,6 +208,7 @@ function selectAnswer(option) {
 function showResult() {
   const quizDiv = document.getElementById("quiz");
   const resultDiv = document.getElementById("result");
+  const retryButton = document.getElementById("retryButton");
 
   // Create a combination key from the user's answers
   const combination = answers.join(", ").toLowerCase();
@@ -235,7 +234,19 @@ function showResult() {
       </div>
     </div>
   `;
+
+  retryButton.style.display = 'block';
 }
+
+document.getElementById("retryButton").onclick = function() {
+  currentQuestion = 0;
+  answers = [];
+  
+  document.getElementById("result").innerHTML = '';
+  document.getElementById("retryButton").style.display = 'none';
+
+  displayQuestion();
+};
 
 // Start the quiz by displaying the first question
 displayQuestion();
