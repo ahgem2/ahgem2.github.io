@@ -1,78 +1,129 @@
-/* Background and body styling */
-body {
-    background: url('https://example.com/clouds.gif') no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Container styling to ensure mobile look */
-.container {
+.phone-container {
+    position: relative;
     text-align: center;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(128, 0, 128, 0.7); /* Purple background */
     border-radius: 10px;
     margin: 20px auto;
     width: 100%;
-    max-width: 400px; /* Locks the width to 400px for mobile look */
-    height: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
 }
 
-/* Button styling for purple buttons in vertical layout */
-button {
-    padding: 15px;
-    background-color: #6a0dad; /* Purple color */
-    border: none;
-    border-radius: 10px;
+/* Left GIF - soup noodles */
+.gif-left {
+    position: absolute;
+    left: -70px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.left-gif {
+    width: 100px;
+}
+
+/* Right GIF - bagel */
+.gif-right {
+    position: absolute;
+    right: -70px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.right-gif {
+    width: 100px;
+}
+
+/* Quiz content styling */
+.quiz-content {
+    padding: 10px;
     color: white;
+    font-family: 'Press Start 2P', cursive; /* Applying pixel-like font */
+    font-size: 16px;
+}
+
+/* Style for quiz buttons */
+button {
+    background-color: #6200ea;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 18px;
-    margin-bottom: 15px; /* Space between buttons */
+    display: block;
     width: 100%;
+    max-width: 250px;
+    margin: 10px auto;
 }
 
-/* Button hover effect */
 button:hover {
-    background-color: #5b009a; /* Darker purple */
+    background-color: #3700b3;
 }
 
-/* Styling for result section */
+/* Result styling */
 .result {
     margin-top: 20px;
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 18px;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
 }
 
-/* Ensuring the heading fits within the narrow mobile-like container */
-h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+/* Container for result text and GIFs */
+.result-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    position: relative;
 }
 
-/* Responsive mobile styling */
-@media screen and (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
+/* Left GIF in the result section */
+.result-gif-left {
+    position: relative;
+    left: -40px;
+}
 
-    .container {
-        width: 100%;
-        margin: 0;
-        padding: 20px;
-    }
+.gif-left-result {
+    width: 100px;
+}
 
-    button {
-        font-size: 16px;
-    }
+/* Right GIF in the result section */
+.result-gif-right {
+    position: relative;
+    right: -40px;
+}
 
-    h2 {
-        font-size: 20px;
-    }
+.gif-right-result {
+    width: 100px;
+}
+
+/* Styling for the result text */
+.result-text {
+    text-align: center;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.result-text h2 {
+    margin-bottom: 10px;
+}
+
+.result-text p {
+    font-size: 18px;
+}
+
+/* Ensure that the container doesn't overflow */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Press Start 2P', cursive;
 }

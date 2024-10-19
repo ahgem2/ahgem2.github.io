@@ -2,25 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures mobile responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Food Mood Quiz</title>
 </head>
 <body>
-    <div class="container">
-        <h1>What Type of Food Are You Feeling?</h1>
+    <div class="container phone-container">
+        <!-- Left GIF -->
+        <div class="gif-left">
+            <img src="https://media.tenor.com/PjmKRWnNSEsAAAAC/soup-noodles.gif" alt="Soup GIF" class="left-gif">
+        </div>
         
-        <!-- Quiz content area -->
-        <div id="quiz"></div>
-        
-        <!-- Next button to move through quiz -->
-        <button id="nextButton">Next</button>
-        
-        <!-- Result display area -->
+        <!-- Quiz Content Area -->
+        <div id="quiz" class="quiz-content"></div>
+
+        <!-- Right GIF -->
+        <div class="gif-right">
+            <img src="https://media.tenor.com/VLPT0wfRwvIAAAAC/pixel-art-bagel.gif" alt="Bagel GIF" class="right-gif">
+        </div>
+
+        <!-- Result Display Area -->
         <div id="result" class="result"></div>
     </div>
-    
-    <!-- Linking the script.js file -->
+
     <script src="script.js"></script>
 </body>
 </html>
