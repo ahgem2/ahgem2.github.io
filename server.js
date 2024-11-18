@@ -20,25 +20,12 @@ const openai = new OpenAI({
 });
 
 // Endpoint for handling AI responses
-app.post("/api/quiz", async (req, res) => {
-  try {
-    const { answers } = req.body; // Extract answers from request body
-    console.log("Received answers:", answers);
+app.post("/api/quiz", (req, res) => {
+  const { answers } = req.body;
+  console.log("Received answers:", answers);
 
-    const prompt = `Based on the user's answers: ${answers.join(", ")}, suggest a fun and creative food match idea.`;
-
-    // OpenAI API call
-    const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: prompt }],
-    });
-
-    const result = response.choices[0].message.content.trim();
-    res.status(200).json({ result }); // Send result back to client
-  } catch (error) {
-    console.error("Error calling OpenAI API:", error.message);
-    res.status(500).json({ error: "Something went wrong!" });
-  }
+  // Send a basic response
+  res.status(200).json({ message: "API is working!", answers: answers });
 });
 
 
