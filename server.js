@@ -1,5 +1,5 @@
 const express = require("express");
-const { Configuration, OpenAIApi } = require("openai");
+const { OpenAI } = require("openai"); // Correct import for OpenAI v4
 const dotenv = require("dotenv");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -12,26 +12,25 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Configure OpenAI
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY, // Load the API key from .env
 });
-const openai = new OpenAIApi(configuration);
 
 // Endpoint for handling AI responses
 app.post("/api/quiz", async (req, res) => {
   try {
     const { answers } = req.body; // Get answers from the request body
-    const prompt = `Based on the user's answers: ${answers.join(", ")}, suggest a fun and creative food match idea.`;
+    const prompt = `Based on the user's answers: ${answers.join(
+      ", "
+    )}, suggest a fun and creative food match idea.`;
 
     // Call OpenAI API
-    const response = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: prompt,
-      max_tokens: 100,
-      temperature: 0.7,
+    const response = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo", // Use "gpt-4" if available
+      messages: [{ role: "system", content: prompt }],
     });
 
-    const result = response.data.choices[0].text.trim();
+    const result = response.choices[0].message.content.trim();
     res.status(200).json({ result });
   } catch (error) {
     console.error("Error calling OpenAI API:", error.message);
