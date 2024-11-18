@@ -10,6 +10,9 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+app.get("/", (req, res) => {
+  res.send("Welcome to the Quiz API! Use POST /api/quiz to interact.");
+});
 
 // Configure OpenAI
 const openai = new OpenAI({
