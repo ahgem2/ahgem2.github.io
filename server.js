@@ -19,26 +19,24 @@ const openai = new OpenAI({
 // Endpoint for handling AI responses
 app.post("/api/quiz", async (req, res) => {
   try {
-    const { answers } = req.body; // Get answers from the request body
-    console.log("Received answers:", answers); // Debugging log
+    const { answers } = req.body; // Log the received data
+    console.log("Received answers:", answers);
 
-    const prompt = `Based on the user's answers: ${answers.join(
-      ", "
-    )}, suggest a fun and creative food match idea.`;
-    console.log("Generated prompt:", prompt); // Debugging log
+    const prompt = `Based on the user's answers: ${answers.join(", ")}, suggest a fun and creative food match idea.`;
+    console.log("Generated prompt:", prompt);
 
-    // Call OpenAI API
+    // OpenAI API call
     const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo", // Use "gpt-4" if available
+      model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: prompt }],
     });
 
     const result = response.choices[0].message.content.trim();
-    console.log("OpenAI response:", result); // Debugging log
+    console.log("OpenAI API Response:", result);
 
     res.status(200).json({ result });
   } catch (error) {
-    console.error("Error calling OpenAI API:", error.message); // Log the error
+    console.error("Full Error Details:", error); // Log full error details
     res.status(500).json({ error: "Something went wrong!" });
   }
 });
