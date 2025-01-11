@@ -1,22 +1,24 @@
 const express = require("express");
-const { OpenAI } = require("openai"); // Correct import for OpenAI v4
+const { OpenAIApi, Configuration } = require("openai"); // Correct import
 const dotenv = require("dotenv");
-const cors = require("cors");
 const bodyParser = require("body-parser");
 
 // Load environment variables
 dotenv.config();
 
+// Initialize OpenAI client
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
+
+// Initialize Express app
 const app = express();
-app.use(cors());
 app.use(bodyParser.json());
+
+// Default GET route
 app.get("/", (req, res) => {
   res.send("Welcome to the Quiz API! Use POST /api/quiz to interact.");
-});
-
-// Configure OpenAI
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, // Load the API key from .env
 });
 
 // Endpoint for handling AI responses
@@ -25,15 +27,16 @@ app.post("/api/quiz", async (req, res) => {
     const { answers } = req.body;
     console.log("Received answers:", answers);
 
-    const prompt = `Based on the user's answers: ${answers.join(", ")}, suggest a fun and creative food match idea.`;
+    const prompt = `Based on the user's answers: ${answers.join(
+      ", "
+    )}, suggest a fun and creative food match idea.`;
 
-    // Test OpenAI integration
-    const response = await openai.chat.completions.create({
+    const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: prompt }],
     });
 
-    const result = response.choices[0].message.content.trim();
+    const result = response.data.choices[0].message.content.trim();
     console.log("OpenAI response:", result);
 
     res.status(200).json({ result });
@@ -43,10 +46,8 @@ app.post("/api/quiz", async (req, res) => {
   }
 });
 
-
 // Start the server
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
-
