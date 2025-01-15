@@ -26,7 +26,7 @@
 /* Right GIF - bagel */
 .gif-right {
     position: absolute;
-    right: -70px;
+    right: -10px;
     top: 50%;
     transform: translateY(-50%);
 } 
