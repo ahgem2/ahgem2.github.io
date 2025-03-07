@@ -1,24 +1,21 @@
 .phone-container {
-    /* position: relative;
-    text-align: center;
-    padding: 20px;
-    background-color: rgba(128, 0, 128, 0.7); 
-    border-radius: 10px;
-    margin: 20px auto;
-    width: 2000px;
-    max-width: 2000px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    overflow: hidden; */
+    /* Maintain existing hidden overflow to prevent unwanted scroll */
+    overflow: hidden;
 }
 
 /* Left GIF - soup noodles */
 .gif-left {
     position: absolute;
-    left: -70px;
+    left: 0;
     top: 50%;
     transform: translateY(-50%);
+    width: 10vw;
+    max-width: 100px;
+    min-width: 50px;
+    z-index: 1; /* Keep GIF behind buttons */
 }
 
+/* Left GIF size */
 .left-gif {
     width: 100px;
 }
@@ -26,11 +23,16 @@
 /* Right GIF - bagel */
 .gif-right {
     position: absolute;
-    right: -10px;
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
-} 
+    width: 10vw;
+    max-width: 100px;
+    min-width: 50px;
+    z-index: 1; /* Keep GIF behind buttons */
+}
 
+/* Right GIF size */
 .right-gif {
     width: 100px;
 }
@@ -39,8 +41,10 @@
 .quiz-content {
     padding: 2px;
     color: white;
-    font-family: 'Press Start 2P', cursive; /* Applying pixel-like font */
+    font-family: 'Press Start 2P', cursive;
     font-size: 16px;
+    position: relative;
+    z-index: 2; /* Ensure buttons are above GIFs */
 }
 
 /* Style for quiz buttons */
@@ -48,16 +52,17 @@ button {
     background-color: #6200ea;
     border: none;
     color: white;
-    padding: 10px 20px;
-    margin: 10px 0;
+    padding: 15px 25px; /* Bigger buttons */
+    margin: 15px 0;
     font-family: 'Press Start 2P', cursive;
-    font-size: 14px;
-    border-radius: 5px;
+    font-size: 16px; /* Bigger text */
+    border-radius: 10px;
     cursor: pointer;
     display: block;
     width: 100%;
-    max-width: 200px;
+    max-width: 250px;
     margin: 10px auto;
+    z-index: 2; /* Ensure buttons are above GIFs */
 }
 
 button:hover {
@@ -75,30 +80,18 @@ button:hover {
 /* Container for result text and GIFs */
 .result-container {
     display: flex;
+    flex-direction: column; /* GIF on top */
     justify-content: center;
     align-items: center;
     margin-top: 20px;
     position: relative;
 }
 
-/* Left GIF in the result section */
-.result-gif-left {
-    position: relative;
-    left: -40px;
-}
-
-.gif-left-result {
-    width: 100px;
-}
-
-/* Right GIF in the result section */
-.result-gif-right {
-    position: relative;
-    right: -40px;
-}
-
-.gif-right-result {
-    width: 100px;
+/* GIF in the result section */
+.result-gif {
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 20px;
 }
 
 /* Styling for the result text */
@@ -124,6 +117,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     font-family: 'Press Start 2P', cursive;
+    overflow: hidden;
+}
+
+/* Responsive styles to resize GIFs and keep buttons accessible */
+@media (max-width: 600px) {
+    .gif-left, .gif-right {
+        width: 8vw;
+        max-width: 80px;
+        min-width: 40px;
+    }
+    
+    button {
+        max-width: 90%;
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+    
+    .result-container {
+        padding: 10px;
+    }
 }

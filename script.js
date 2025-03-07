@@ -204,7 +204,7 @@ function selectAnswer(option) {
   }
 }
 
-// Show the result
+// Show the result with GIF on top and text below
 function showResult() {
   const quizDiv = document.getElementById("quiz");
   const resultDiv = document.getElementById("result");
@@ -214,21 +214,22 @@ function showResult() {
   quizDiv.innerHTML = "";
 
   // Determine the best food match based on answers
-  let bestMatch = "Homemade Fried Rice"; // Default answer
-  let maxMatches = 0;
+  const bestMatch = getFoodResult(answers);
+  const resultData = foodResults[bestMatch];
 
-  // Find the best match
-  Object.keys(foodResults).forEach((food) => {
-    const matchCount = foodResults[food].matches.filter((match) =>
-      answers.includes(match)
-
-  ).length;
-
-    if (matchCount > maxMatches) {
-      maxMatches = matchCount;
-      bestMatch = food;
-    }
-  });
+  // Display the result with the specific GIF and description
+  resultDiv.innerHTML = `
+      <div class="result-container">
+          <img src="${resultData.gif}" alt="${bestMatch} GIF" class="result-gif" />
+          <div class="result-text">
+              <h2>Your Food Match: ${bestMatch}</h2>
+              <p>${resultData.description}</p>
+              <p><strong>Your Fortune:</strong> ${resultData.fortune}</p>
+          </div>
+      </div>
+  `;
+  retryButton.style.display = "block";
+}
 
   const resultData = foodResults[bestMatch];
 
@@ -338,7 +339,6 @@ console.log("Recommended Food:", result);
     </div>
   `;
   retryButton.style.display = "block";
-}
 
 // Retry the quiz
 document.getElementById("retryButton").onclick = function () {
