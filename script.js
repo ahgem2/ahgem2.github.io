@@ -85,6 +85,63 @@ const questions = [
   },
 ];
 
+// Add predefined results with advanced answer matching
+const foodResults = {
+  Chocolate: {
+    gif: "gifs/chocolate.gif",
+    description: "You are simply too sweet for the world, let chocolate people dream about the world in new ways, find their forests, and travel to people who mean the universe.",
+    fortune: "Hanging under the moonlight, you thrive, where hanging by the thread, you find. Both hard and soft work always belong at the right time, don't worry everything will be alright.",
+    matches: ["Indulgent and luxurious", "Content and happy", "Money's no issue, treat yourself!", "Basking in the sunshine, about to nap", "Good dinner, no stress, just relaxation"]
+  },
+  Orange: {
+    gif: "gifs/kitty-love.gif",
+    description: "Sometimes you can feel the citrus in the air, or maybe you are liberated from all the chaos. Let it be known that there aren't many souls who see poetry in wind. Maybe letting time fly by isn't a bad idea for now.",
+    fortune: "Let flowers grow as slow and fast as they need to for now, not every detail on our lives needs to be monitored like oceans abroad. Take care of yourself in new ways and feel anew!",
+    matches: ["snack", "air", "grassy fields", "barely got a dollar"]
+  },
+  Noodles: {
+    gif: "gifs/soup-noodles.gif",
+    description: "There's many different noodles you haven't tried yet...including many ramens. But, to the ones you have, let it be known that you always stay grounded to the nature of our universe.",
+    fortune: "Every twist and turn brings you closer to fulfillment. Embrace each strand of life!",
+    matches: ["feeling satisfied", "warm and cozy", "completely satisfied", "staying budget-friendly", "exploring a new culture"]
+  },
+  Pasta: {
+    gif: "gifs/pasta.gif",
+    description: "Linguine linguini, how lovely it is to savor the moment right now. You live by 'Eat well!' and I have to ask - has anyone appreciated you recently? Thank you for being you Pasta people.",
+    fortune: "It takes two souls to bring a smile to your face. Cherish getting to know yourself and see the beauty in love since it may be instilled in you.",
+    matches: ["dinner time, let's go big!", "relaxing by a waterfall", "splurging a little today"]
+  },
+  "Korean BBQ or Hotpot": {
+    gif: "gifs/bbq.gif",
+    description: "Splitting food right now with some warm soup or grilled meat is a way of celebrating life. Don't discount the beauty of your own.",
+    fortune: "Smile at the good, smile after the bads. The only one that matters is yourself. Live life, it's just too short.",
+    matches: ["warm and cozy", "mid-range budget", "at a rooftop party in the city", "sharing food and bonding with friends"]
+  },
+  Curry: {
+    gif: "gifs/curry.gif",
+    description: "Curry's warmth and spice bring comfort and adventure in every bite. You embody a mix of boldness and coziness.",
+    fortune: "Life is a blend of flavors, each moment adding to the rich tapestry of your journey. Embrace it all!",
+    matches: ["warm and cozy", "exploring a new culture", "mid-range budget"]
+  },
+  Sandwich: {
+    gif: "gifs/sandwich.gif",
+    description: "Simple, reliable, and versatile. You adapt to every situation with ease.",
+    fortune: "In simplicity, you find strength. The layers of your life add flavor to the world around you.",
+    matches: ["keeping it under $15", "feeling satisfied", "snack"]
+  },
+  "Strawberry Cake": {
+    gif: "gifs/strawberry-cake.gif",
+    description: "As sweet as strawberry cake, you bring joy and freshness wherever you go. Your delightful presence makes every moment a little brighter.",
+    fortune: "Keep spreading sweetness and joy. Your energy is a gift to those around you!",
+    matches: ["playful and energetic", "content and happy", "barely got a dollar", "good dinner, no stress, just relaxation"]
+  },
+  "Homemade Fried Rice": {
+    gif: "gifs/rice.gif",
+    description: "When nothing else matches, a bowl of homemade fried rice offers comfort and creativity. You make the best of every situation.",
+    fortune: "Every grain of rice is a story of patience and perseverance. Keep going!",
+    matches: []
+  }
+};
 // Display current question
 function displayQuestion() {
   const quizDiv = document.getElementById("quiz");
@@ -156,44 +213,37 @@ function showResult() {
   // Clear quiz content
   quizDiv.innerHTML = "";
 
-  // Create a prompt based on user answers
-  const prompt = `Based on these answers: ${answers.join(
-    ", "
-  )}, suggest a fun and creative food idea.`;
+  // Determine the best food match based on answers
+  let bestMatch = "Homemade Fried Rice"; // Default answer
+  let maxMatches = 0;
 
-  // Fetch result from API
-  fetch("http://localhost:5000/api/quiz", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ answers }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      // Display the result
-      resultDiv.innerHTML = `
-      <div class="result-container">
-        <div class="result-gif-left">
-          <img src="gifs/smolverse-smol.gif" alt="Smolverse Smol GIF" class="gif-left-result">
-        </div>
-        <div class="result-text">
-          <h2>Your Food Match:</h2>
-          <p>${data.result}</p>
-        </div>
-        <div class="result-gif-right">
-          <img src="gifs/heart-flashy.gif" alt="Heart Flashy GIF" class="gif-right-result">
-        </div>
+  // Find the best match
+  Object.keys(foodResults).forEach((food) => {
+    const matchCount = foodResults[food].matches.filter((match) =>
+      answers.includes(match)
+
+  ).length;
+
+    if (matchCount > maxMatches) {
+      maxMatches = matchCount;
+      bestMatch = food;
+    }
+  });
+
+  const resultData = foodResults[bestMatch];
+
+  // Display the result with the specific GIF and description
+  resultDiv.innerHTML = `
+    <div class="result-container">
+      <img src="${resultData.gif}" alt="${bestMatch} GIF" class="result-gif">
+      <div class="result-text">
+        <h2>Your Food Match: ${bestMatch}</h2>
+        <p>${resultData.description}</p>
+        <p><strong>Your Fortune:</strong> ${resultData.fortune}</p>
       </div>
-      `;
-      retryButton.style.display = "block";
-    })
-    .catch((error) => {
-      console.error("Error fetching result:", error);
-      resultDiv.innerHTML = `
-      <p>Oops! Something went wrong. Please try again later.</p>
-      `;
-    });
+    </div>
+  `;
+  retryButton.style.display = "block";
 }
 
 // Retry the quiz
