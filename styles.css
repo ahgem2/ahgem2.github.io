@@ -11,7 +11,8 @@
     width: 15vw;
     max-width: 100px;
     min-width: 50px;
-    z-index: 1;
+    z-index: 0; /* Lowered z-index to keep behind buttons */
+    pointer-events: none; /* Prevent interaction with GIF */
 }
 
 .left-gif {
@@ -27,7 +28,8 @@
     width: 15vw;
     max-width: 100px;
     min-width: 50px;
-    z-index: 1;
+    z-index: 0; /* Lowered z-index to keep behind buttons */
+    pointer-events: none; /* Prevent interaction with GIF */
 }
 
 .right-gif {
@@ -41,7 +43,7 @@
     font-family: 'Press Start 2P', cursive;
     font-size: 16px;
     position: relative;
-    z-index: 2;
+    z-index: 2; /* Ensure buttons are above GIFs */
 }
 
 /* Style for quiz buttons */
@@ -49,16 +51,16 @@ button {
     background-color: #6200ea;
     border: none;
     color: white;
-    padding: 15px 25px;
-    margin: 10px 0;
+    padding: 25px 35px; /* Bigger buttons */
+    margin: 15px 0;
     font-family: 'Press Start 2P', cursive;
-    font-size: 16px;
+    font-size: 22px; /* Bigger text */
     border-radius: 10px;
     cursor: pointer;
     display: block;
-    width: 90%;
-    max-width: 350px;
-    margin: 10px auto;
+    width: 100%;
+    max-width: 500px; /* Longer buttons */
+    margin: 15px auto;
     z-index: 2;
 }
 
@@ -122,14 +124,14 @@ body {
 /* Responsive styles to resize GIFs and keep buttons accessible */
 @media (max-width: 600px) {
     .gif-left, .gif-right {
-        width: 12vw;
-        max-width: 80px;
-        min-width: 40px;
+        width: 10vw;
+        max-width: 70px;
+        min-width: 30px;
     }
     button {
         max-width: 95%;
-        font-size: 16px;
-        padding: 15px 20px;
+        font-size: 22px;
+        padding: 25px 30px;
     }
     .result-container {
         padding: 10px;
