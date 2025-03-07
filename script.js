@@ -233,7 +233,7 @@ function showResult() {
 
   const resultData = foodResults[bestMatch];
 
-  // Full Food Recommendation Algorithm with Positive and Negative Scoring
+// Full Food Recommendation Algorithm with Positive and Negative Scoring
 
 // Function to calculate the best food match based on user's answers
 function getFoodResult(userAnswers) {
