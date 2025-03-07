@@ -232,6 +232,100 @@ function showResult() {
 
   const resultData = foodResults[bestMatch];
 
+  // Full Food Recommendation Algorithm with Positive and Negative Scoring
+
+// Function to calculate the best food match based on user's answers
+function getFoodResult(userAnswers) {
+  const scoreMap = {};
+
+  // Loop through each food result
+  Object.keys(foodResults).forEach((food) => {
+      let score = 0;
+
+      // Check each user answer against the preferred matches
+      foodResults[food].matches.forEach((match) => {
+          if (userAnswers.includes(match)) {
+              score += 2; // Increase score for each matching answer
+          }
+      });
+
+      // Apply positive scoring for specific scenarios
+      if (userAnswers.includes("Comfortably full") || userAnswers.includes("Refreshed and light")) {
+          if (food === "Orange") score += 5; // Orange fits light and refreshing moods
+      }
+      if (userAnswers.includes("Money's no issue, treat yourself!")) {
+          if (food === "Korean BBQ or Hotpot") score += 5; // High budget, luxurious choice
+      }
+      if (userAnswers.includes("Frolicking in grassy fields")) {
+          if (food === "Orange") score += 5; // Orange aligns with fresh, nature-inspired vibes
+      }
+      if (userAnswers.includes("Late morning, ready for lunch") || userAnswers.includes("Picnic")) {
+          if (food === "Sandwich" || food === "Noodles") score += 5; // Light and convenient meals
+      }
+
+      // Apply negative scoring for mismatched scenarios
+      if (userAnswers.includes("Early morning, too tired for this") && food === "Strawberry Cake") {
+          score -= 5; // Discourage this food choice in the morning
+      }
+      if (userAnswers.includes("Afternoon snack time") && food === "Korean BBQ or Hotpot") {
+          score -= 5; // Avoid heavy meals for snack time
+      }
+      if (userAnswers.includes("Barely got a dollar") && food === "Pasta") {
+          score -= 5; // Pasta may not fit a tight budget
+      }
+
+      scoreMap[food] = score;
+  });
+
+  // Get the top-scoring food based on user answers
+  const topResult = Object.keys(scoreMap).reduce((a, b) => scoreMap[a] > scoreMap[b] ? a : b);
+  return topResult;
+}
+
+// Example usage with all possible answer choices
+const userSelections = [
+  "Cozy and relaxed",
+  "Ready for an adventure",
+  "Feeling satisfied",
+  "Curious about something new",
+  "Playful and energetic",
+  "Indulgent and luxurious",
+  "Comfortably full",
+  "Refreshed and light",
+  "Warm and cozy",
+  "Completely satisfied",
+  "Energized for the rest of the day",
+  "Content and happy",
+  "Barely got a dollar",
+  "Keeping it under $15",
+  "Splurging a little today",
+  "Staying budget-friendly",
+  "Mid-range budget",
+  "Money's no issue, treat yourself!",
+  "Frolicking in grassy fields",
+  "At a rooftop party in the city",
+  "Exploring a new culture",
+  "Relaxing by a waterfall",
+  "Basking in the sunshine, about to nap",
+  "Chilling at the beach, taking photos",
+  "Early morning, too tired for this",
+  "Late morning, ready for lunch",
+  "Afternoon snack time",
+  "Dinner time, let's go big!",
+  "Midnight craving, let's feast!",
+  "Dinner, but keeping it calm",
+  "Laid-back and chill",
+  "Sharing food and bonding with friends",
+  "Indulging in a little luxury",
+  "Enjoying fresh air and great food",
+  "Midnight snacking under the stars",
+  "Good dinner, no stress, just relaxation"
+];
+
+const result = getFoodResult(userSelections);
+console.log("Recommended Food:", result);
+
+
   // Display the result with the specific GIF and description
   resultDiv.innerHTML = `
     <div class="result-container">
