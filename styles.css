@@ -11,12 +11,13 @@
     width: 15vw;
     max-width: 100px;
     min-width: 50px;
-    z-index: 0; /* Lowered z-index to keep behind buttons */
+    z-index: 1; /* Lowered z-index to keep behind buttons */
     pointer-events: none; /* Prevent interaction with GIF */
 }
 
 .left-gif {
-    width: 100px;
+    max-width: 100%;
+    height: auto;
 }
 
 /* Right GIF - bagel */
@@ -28,22 +29,33 @@
     width: 15vw;
     max-width: 100px;
     min-width: 50px;
-    z-index: 0; /* Lowered z-index to keep behind buttons */
-    pointer-events: none; /* Prevent interaction with GIF */
+    z-index: 1;
+    pointer-events: none;
 }
 
 .right-gif {
-    width: 100px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Container for centering content */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 10px;
 }
 
 /* Quiz content styling */
 .quiz-content {
-    padding: 2px;
+    padding: 10px;
     color: white;
     font-family: 'Press Start 2P', cursive;
     font-size: 16px;
+    z-index: 2; /* Ensure content is above GIFs */
     position: relative;
-    z-index: 2; /* Ensure buttons are above GIFs */
 }
 
 /* Style for quiz buttons */
@@ -51,17 +63,15 @@ button {
     background-color: #6200ea;
     border: none;
     color: white;
-    padding: 25px 35px; /* Bigger buttons */
+    padding: 15px 25px;
     margin: 15px 0;
     font-family: 'Press Start 2P', cursive;
-    font-size: 22px; /* Bigger text */
+    font-size: 22px;
     border-radius: 10px;
     cursor: pointer;
-    display: block;
-    width: 100%;
-    max-width: 500px; /* Longer buttons */
-    margin: 15px auto;
+    max-width: 95%;
     z-index: 2;
+    position: relative;
 }
 
 button:hover {
@@ -74,6 +84,8 @@ button:hover {
     font-size: 18px;
     font-family: 'Press Start 2P', cursive;
     color: white;
+    z-index: 2;
+    position: relative;
 }
 
 /* Container for result text and GIFs */
@@ -108,20 +120,16 @@ button:hover {
     font-size: 18px;
 }
 
-/* Ensure that the container doesn't overflow */
+/* Body styling to prevent overflow issues */
 body {
     margin: 0;
     padding: 0;
     background-color: #121212;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    overflow-y: auto;
     font-family: 'Press Start 2P', cursive;
-    overflow: hidden;
 }
 
-/* Responsive styles to resize GIFs and keep buttons accessible */
+/* Responsive styles for smaller screens */
 @media (max-width: 600px) {
     .gif-left, .gif-right {
         width: 10vw;
@@ -129,11 +137,7 @@ body {
         min-width: 30px;
     }
     button {
-        max-width: 95%;
-        font-size: 22px;
-        padding: 25px 30px;
-    }
-    .result-container {
-        padding: 10px;
+        font-size: 18px;
+        padding: 15px 20px;
     }
 }

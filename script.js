@@ -351,3 +351,5 @@ document.getElementById("retryButton").onclick = function () {
 
 // Start the quiz
 displayQuestion();
+
+<script src="script.js" defer></script>
