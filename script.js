@@ -38,10 +38,6 @@ const questions = [
       "Money's no issue, treat yourself!",
       "Home cooking",
     ],
-    gifs: {
-      left: "/assets/budget-left.gif",
-      right: "/assets/budget-right.gif",
-    },
   },
   {
     question: "Where would you rather be right now?",
