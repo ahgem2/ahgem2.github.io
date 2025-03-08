@@ -12,10 +12,7 @@ const questions = [
       "Afternoon snack time",
       "Dinner time!",
     ],
-    gifs: {
-      left: "//assets/time-left.gif",
-      right: "//assets/time-right.gif",
-    },
+   
   },
   {
     question: "How hungry are you feeling?",
@@ -25,10 +22,7 @@ const questions = [
       "Barely hungry",
       "Refreshed and light",
     ],
-    gifs: {
-      left: "//assets/hungry-left.gif",
-      right: "/assets/hungry-right.gif",
-    },
+   
   },
   {
     question: "What's your budget like?",
@@ -47,10 +41,7 @@ const questions = [
       "Picnic",
       "Frolicking in grassy fields",
     ],
-    gifs: {
-      left: "/assets/place-left.gif",
-      right: "/assets/place-right.gif",
-    },
+   
   },
 ];
 
