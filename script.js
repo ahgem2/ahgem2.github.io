@@ -119,7 +119,7 @@ const foodResults = {
     ],
   },
   "Strawberry Cake": {
-    gif: "/assets/cake.gif",
+    gif: "/assets/strawberry-cake.gif",
     description:
       "Sweet, special, and meant to be celebrated. You bring joy to those around you!",
     fortune:
@@ -131,7 +131,7 @@ const foodResults = {
     ],
   },
   "Homemade Fried Rice": {
-    gif: "/assets/friedrice.gif",
+    gif: "/assets/rice.gif",
     description:
       "Resourceful, creative, and comforting. You make the most of what you have!",
     fortune: "Your creativity will solve a problem that's been bothering you.",
