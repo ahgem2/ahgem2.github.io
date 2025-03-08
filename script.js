@@ -61,7 +61,7 @@ const questions = [
 // Result data - using your original structure but keeping the matches
 const foodResults = {
   Orange: {
-    gif: "/assets/orange.gif",
+    gif: "/assets/kitty-love.gif",
     description: "Fresh and zesty, just like your personality!",
     fortune: "A surprise awaits you this week.",
     matches: [
