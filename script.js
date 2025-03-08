@@ -13,8 +13,8 @@ const questions = [
       "Dinner time!",
     ],
     gifs: {
-      left: "//assets/time-left.gif",
-      right: "//assets/time-right.gif",
+      left: "/assets/buff.gif",
+      right: "/assets/buff.gif",
     },
   },
   {
@@ -26,7 +26,7 @@ const questions = [
       "Refreshed and light",
     ],
     gifs: {
-      left: "//assets/hungry-left.gif",
+      left: "/assets/hungry-left.gif",
       right: "/assets/hungry-right.gif",
     },
   },
