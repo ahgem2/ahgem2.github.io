@@ -39,8 +39,8 @@ const questions = [
       "Home cooking",
     ],
     gifs: {
-      left: "/assets/budget-left.gif",
-      right: "/assets/budget-right.gif",
+      left: "/assets/rice.gif",
+      right: "/assets/buff.gif",
     },
   },
   {
