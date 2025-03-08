@@ -22,29 +22,29 @@ app.get("/", (req, res) => {
 });
 
 // Endpoint for handling AI responses
-app.post("/api/quiz", async (req, res) => {
-  try {
-    const { answers } = req.body;
-    console.log("Received answers:", answers);
+// app.post("/api/quiz", async (req, res) => {
+//   try {
+//     const { answers } = req.body;
+//     //console.log("Received answers:", answers);
 
-    const prompt = `Based on the user's answers: ${answers.join(
-      ", "
-    )}, suggest a fun and creative food match idea.`;
+//     const prompt = `Based on the user's answers: ${answers.join(
+//       ", "
+//     )}, suggest a fun and creative food match idea.`;
 
-    const response = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: prompt }],
-    });
+//     const response = await openai.createChatCompletion({
+//       model: "gpt-3.5-turbo",
+//       messages: [{ role: "user", content: prompt }],
+//     });
 
-    const result = response.data.choices[0].message.content.trim();
-    console.log("OpenAI response:", result);
+//     const result = response.data.choices[0].message.content.trim();
+//    // console.log("OpenAI response:", result);
 
-    res.status(200).json({ result });
-  } catch (error) {
-    console.error("Error calling OpenAI API:", error.message);
-    res.status(500).json({ error: "OpenAI API failed!" });
-  }
-});
+//     res.status(200).json({ result });
+//   } catch (error) {
+//     console.error("Error calling OpenAI API:", error.message);
+//     res.status(500).json({ error: "OpenAI API failed!" });
+//   }
+// });
 
 // Start the server
 const PORT = 3000;
