@@ -26,8 +26,8 @@ const questions = [
       "Refreshed and light",
     ],
     gifs: {
-      left: "/assets/hungry-left.gif",
-      right: "/assets/hungry-right.gif",
+      left: "/assets/rice.gif",
+      right: "/assets/rice.gif",
     },
   },
   {
