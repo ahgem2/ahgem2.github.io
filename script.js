@@ -90,7 +90,7 @@ const foodResults = {
     matches: ["Late morning, ready for lunch", "Picnic", "Barely got a dollar"],
   },
   "Korean BBQ or Hotpot": {
-    gif: "/assets/bbq.gif",
+    gif: "/assets/kbbq.gif",
     description:
       "Social, adventurous, and always up for a good time. You bring people together!",
     fortune: "A gathering with friends will lead to a meaningful connection.",
@@ -108,7 +108,7 @@ const foodResults = {
     matches: ["Barely hungry", "Afternoon snack time", "Cozy at home"],
   },
   Noodles: {
-    gif: "/assets/noodles.gif",
+    gif: "/assets/soup-noodles.gif",
     description:
       "Long-lasting, flexible, and full of variety. Your life is rich with experiences and possibilities!",
     fortune: "An unexpected journey will bring new knowledge.",
