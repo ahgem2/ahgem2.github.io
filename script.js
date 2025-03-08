@@ -156,10 +156,10 @@ function displayQuestion() {
   questionContainer.classList.add("question-container");
 
   // Add left GIF
-  // const leftGif = document.createElement("img");
-  // leftGif.src = currentData.gifs.left;
-  // leftGif.alt = "Left GIF";
-  // leftGif.classList.add("gif-left");
+  const leftGif = document.createElement("img");
+  leftGif.src = currentData.gifs.left;
+  leftGif.alt = "Left GIF";
+  leftGif.classList.add("gif-left");
 
   // Add right GIF
   const rightGif = document.createElement("img");
