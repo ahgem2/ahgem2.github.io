@@ -162,10 +162,10 @@ function displayQuestion() {
   leftGif.classList.add("gif-left");
 
   // Add right GIF
-  const rightGif = document.createElement("img");
-  rightGif.src = currentData.gifs.right;
-  rightGif.alt = "Right GIF";
-  rightGif.classList.add("gif-right");
+ // const rightGif = document.createElement("img");
+ // rightGif.src = currentData.gifs.right;
+ // rightGif.alt = "Right GIF";
+ // rightGif.classList.add("gif-right");
 
   // Add the question text
   const questionText = document.createElement("h2");
