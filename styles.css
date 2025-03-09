@@ -9,7 +9,7 @@
     top: 50%;
     transform: translateY(-50%);
     width: 15vw;
-    max-width: 100px;
+    max-width: 100%;
     min-width: 50px;
     z-index: 1; /* Lowered z-index to keep behind buttons */
     pointer-events: none; /* Prevent interaction with GIF */
@@ -27,7 +27,7 @@
     top: 50%;
     transform: translateY(-50%);
     width: 15vw;
-    max-width: 100px;
+    max-width: 100%;
     min-width: 50px;
     z-index: 1;
     pointer-events: none;
