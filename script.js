@@ -13,8 +13,8 @@ const questions = [
       "Dinner time!",
     ],
     gifs: {
-      left: "/assets/buff.gif",
-      right: "/assets/buff.gif",
+      left: "",
+      right: "",
     },
   },
   {
@@ -183,10 +183,10 @@ function displayQuestion() {
   });
 
   // Append all elements to the question container
-  //questionContainer.appendChild(leftGif);
+  questionContainer.appendChild(leftGif);
   questionContainer.appendChild(questionText);
   questionContainer.appendChild(optionsContainer);
-  //questionContainer.appendChild(rightGif);
+  questionContainer.appendChild(rightGif);
 
   // Append the question container to the quiz div
   quizDiv.appendChild(questionContainer);
