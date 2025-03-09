@@ -131,8 +131,8 @@ body {
     background-color: #121212;
     overflow-y: auto;
     font-family: 'Press Start 2P', cursive;
-    background-image: url("/assets/heart-flashy.gif"); 
-    background-image: image-set(15vw);
+    /* background-image: url("/assets/heart-flashy.gif"); 
+    background-image: image-set(15vw); */
 }
 
 /* Responsive styles for smaller screens */
