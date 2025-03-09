@@ -230,7 +230,7 @@ function showResult() {
     </div>
   `;
 
-  retryButton.style.display = "none";
+  retryButton.style.display = "block";
 }
 
 // Function to calculate the best food match based on user's answers
