@@ -26,8 +26,8 @@ const questions = [
       "Refreshed and light",
     ],
     gifs: {
-      left: "/assets/rice.gif",
-      right: "/assets/rice.gif",
+      left: "",
+      right: "",
     },
   },
   {
@@ -39,8 +39,8 @@ const questions = [
       "Home cooking",
     ],
     gifs: {
-      left: "/assets/rice.gif",
-      right: "/assets/buff.gif",
+      left: "",
+      right: "",
     },
   },
   {
@@ -52,8 +52,8 @@ const questions = [
       "Frolicking in grassy fields",
     ],
     gifs: {
-      left: "/assets/place-left.gif",
-      right: "/assets/place-right.gif",
+      left: "",
+      right: "",
     },
   },
 ];
