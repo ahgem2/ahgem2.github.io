@@ -13,6 +13,7 @@
     min-width: 50px;
     z-index: 1; /* Lowered z-index to keep behind buttons */
     pointer-events: none; /* Prevent interaction with GIF */
+    display: none;
 }
 
 .left-gif {
