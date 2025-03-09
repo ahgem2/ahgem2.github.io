@@ -73,6 +73,7 @@ button {
     z-index: 2;
     position: none;
     display: block;
+    width: 90%;
 }
 
 button:hover {
